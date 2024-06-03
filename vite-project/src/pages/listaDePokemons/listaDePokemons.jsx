@@ -1,5 +1,6 @@
 
 import { useState } from "react"
+import { Card } from "../../components/Card/Card";
 
 export function ListaDePokemons() {
   const pokemons = [
@@ -43,6 +44,9 @@ export function ListaDePokemons() {
         <br />
         <br />
         <button onClick={adicionarPokemons}>Adicionar</button>
+
+        <Card/>
+
       </div>
     </>
   )
