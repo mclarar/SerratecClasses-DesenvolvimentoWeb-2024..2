@@ -1,12 +1,10 @@
 import "./App.css";
-import { useState } from "react";
-import { ListaDePokemons } from "../src/pages/listaDePokemons/listaDePokemons";
-import { Contador } from "./pages/contador/Contador";
+import { Rotas } from "./routes/Routes";
 
 function App() {
   return (
     <>
-      <Contador />
+      <Rotas />
     </>
   );
 }
