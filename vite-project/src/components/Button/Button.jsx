@@ -1,6 +1,6 @@
 import styles from "./button.module.css";
 
-botao - title, valor, onclick;
+// botao - title, valor, onclick;
 
 export function Botao({ valor, onclick, title }) {
   return (
