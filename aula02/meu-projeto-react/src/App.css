@@ -3,3 +3,23 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+.container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+}
+
+.containerInputs{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  width: 20rem;
+  height: 10vh;
+  background-color: #393737;
+  border-radius: 8px;
+  padding: 1rem;
+  margin: auto;
+}
