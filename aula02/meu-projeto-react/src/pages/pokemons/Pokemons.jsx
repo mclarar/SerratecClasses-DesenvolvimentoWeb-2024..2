@@ -8,7 +8,7 @@ export function Pokemons() {
   const [fotoPokemon, setFotoPokemon] = useState("");
 
   useEffect(() => {
-   
+   getPokemon();
   }, [pokemon]);
 
   const getPokemon = async () => {
@@ -16,6 +16,7 @@ export function Pokemons() {
       .get(`/pokemon/${pokemon}`)
       .then((response) => {
         setFotoPokemon(response.data.sprites.front_default);
+        setListaPokemons([...listaPokemons, fotoPokemon]);
        
       })
       .catch((error) => {
@@ -23,7 +24,7 @@ export function Pokemons() {
       })
       .finally(() => {
         console.log("chegou no finally");
-      });
+      })
   };
 
   return (
@@ -35,10 +36,12 @@ export function Pokemons() {
         value={pokemon}
         onChange={(e) => setPokemon(e.target.value)}
       />
-      <button onClick={()=> setListaPokemons([...listaPokemons, fotoPokemon])}>Adcionar pokemon</button>
+      <button onClick={()=> getPokemon()}>Adcionar pokemon</button>
       <ul>
         {listaPokemons.map((fotoPokemon, index) => (
-          <li key={index}><img src={fotoPokemon} alt="fotoPokemon" /></li>
+          <li key={index}>
+            <img src={fotoPokemon} alt="fotoPokemon" />
+          </li>
         ))}
       </ul>
     </>
