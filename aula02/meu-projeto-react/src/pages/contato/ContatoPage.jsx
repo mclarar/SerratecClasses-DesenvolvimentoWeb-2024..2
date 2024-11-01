@@ -11,7 +11,7 @@ export function ContatoPage() {
   }
   return (
     <div>
-      <Navbar />
+      {/* <Navbar /> */}
 
       <Input
         type={"text"}

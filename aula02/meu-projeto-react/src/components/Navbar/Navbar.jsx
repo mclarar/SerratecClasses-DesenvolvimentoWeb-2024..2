@@ -1,7 +1,12 @@
 import styles from './Navbar.module.css';
 import ps1_logo from '../../assets/Playstation_logo_colour.svg.png'
+import { useNavigate } from 'react-router-dom';
 
 export function Navbar(){
+    
+   const navigate = useNavigate(); 
+
+   const handleNavigation=()=> navigate("/contato");
     return(
         <>
             <header className={styles.header}>
@@ -11,8 +16,9 @@ export function Navbar(){
                 <div className={styles.navList}>
                     <ul>
                         <li>Sobre</li>
-                        <li>Contato</li>
+                        <li> <button onClick={handleNavigation}>Contato</button></li>
                         <li>Entrar</li>
+                       
 
                     </ul>
                 </div>
