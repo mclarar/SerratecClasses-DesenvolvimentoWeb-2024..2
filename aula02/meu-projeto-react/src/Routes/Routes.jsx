@@ -4,6 +4,7 @@ import { Layout } from "../Layout/Layout";
 import { ProdutoPage } from "../pages/produto/ProdutoPage";
 import { NotFoundPage } from "../pages/notFound/NotFound";
 import { Pokemons } from "../pages/pokemons/Pokemons";
+import { Requisicao } from "../pages/Requisicao/Requisicao";
 
 export function Rotas() {
   return (
@@ -17,6 +18,7 @@ export function Rotas() {
         </Route>
         <Route path="produtos" element={<ProdutoPage />} />
         <Route path="*" element={<NotFoundPage />} />
+        <Route path="/requisicao" element={<Requisicao />} />
       </Routes>
     </>
   );
