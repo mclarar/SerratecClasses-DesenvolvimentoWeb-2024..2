@@ -3,22 +3,7 @@ import {api} from '../../services/api'
 
 export function Requisicao(){
 
-    useEffect(()=>{
-        getVagas();
-    }, [])
-
-        //GET
-        const getVagas = async () =>{
-            api.get('/vaga')
-            .then((response)=>{
-                   console.log((response.data));
-                    
-            }).catch((error)=>{
-                console.log(error);
-                
-            })
-        }
-
+  
         //POST
         vaga = {
             nome: 'professor',
@@ -26,8 +11,8 @@ export function Requisicao(){
             Remuneracao: 15.000
         }
 
-        const postVaga = async =()=>{
-            api.post('/cadastrar-vaga', vaga ).then((response)=>{
+        const postVaga = async ()=>{
+            await api.post('/cadastrar-vaga', vaga ).then((response)=>{
                 response.data
                 console.log('cadastro realizado com sucesso');
                 
