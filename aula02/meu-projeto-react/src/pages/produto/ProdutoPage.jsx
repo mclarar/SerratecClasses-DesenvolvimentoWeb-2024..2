@@ -26,10 +26,7 @@ export function ProdutoPage() {
 
     //GET
     const getProduto = async () =>{
-        api.get('/produto',{
-          headers: {
-            'Access-Control-Allow-Origin': '',
-          }
+        api.get('/produto', {
         })
         .then((response)=>{
                console.log((response.data));
@@ -39,6 +36,46 @@ export function ProdutoPage() {
             
         })
     }
+
+
+    let produto = {
+      nome: 'Bola Quadrada',
+      valor: 10.00,
+
+  }
+
+  //POST
+  const saveProduto = async (produto) => {
+      //o que veio do usuário será passado como parametro na chamada da função
+      // no lugar do objeto podem ser passados tambem as variáveis
+        
+      try {
+         await api.post('produto', produto)
+         alert('Produto cadastrado com sucesso!')
+      } catch (error) {
+         console.log(error)
+         alert(
+            error.response.data.message + ' ' + 
+            error.response.data.details
+         )
+      }
+   }
+   
+
+   //UPDATE
+   const updateProduto = async (produto) => {
+      try {
+         await api.put('produto', produto)
+         alert('Produto atualizado com sucesso!')
+      } catch (error) {
+         console.log(error)
+         alert(
+            error.response.data.message + ' ' + 
+            error.response.data.details
+         )
+      }
+   }
+
 
 
   return (

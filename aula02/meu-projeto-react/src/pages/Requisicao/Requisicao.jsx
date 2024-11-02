@@ -1,32 +1,45 @@
-import { useEffect } from 'react';
-import {api} from '../../services/api'
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
-export function Requisicao(){
+export const Requisicao = () => {
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  
-        //POST
-        vaga = {
-            nome: 'professor',
-            local: 'Petrópolis',
-            Remuneracao: 15.000
-        }
+  useEffect(() => {
+    // Função para buscar os produtos
+    const fetchProducts = async () => {
+      try {
+        const response = await axios.get('https://fakestoreapi.com/products');
+        setProducts(response.data);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-        const postVaga = async ()=>{
-            await api.post('/cadastrar-vaga', vaga ).then((response)=>{
-                response.data
-                console.log('cadastro realizado com sucesso');
-                
-            }).catch((error)=>{
-                console.log(error);
-                "Não foi possível realizar o cadastro"
-                
-            })
-        }
+    fetchProducts();
+  }, []);
 
-    return(
- 
-        <>
-        <h1>Tela de exemplo de requisição</h1>
-        </>
-    )
-}
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error}</p>;
+
+  return (
+    <div>
+      <h1>Lista de Produtos</h1>
+      <ul>
+        {products.map((product) => (
+          <li key={product.id}>
+            <h2>{product.title}</h2>
+            <p>{product.description}</p>
+            <p>Preço: ${product.price}</p>
+            <img src={product.image} alt={product.title} width={100} />
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+
