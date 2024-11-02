@@ -1,12 +1,13 @@
 import { Rotas } from "./Routes/Routes";
+import { CarrinhoProvider } from "./context/carrinhoContext";
 
 function App() {
-
-
   return (
-   <>
-   <Rotas/>
-   </>
+    <>
+      {/* <CarrinhoProvider> */}
+        <Rotas />
+      {/* </CarrinhoProvider> */}
+    </>
   );
 }
 

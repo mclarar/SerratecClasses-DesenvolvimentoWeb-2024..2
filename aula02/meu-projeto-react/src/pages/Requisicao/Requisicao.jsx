@@ -6,9 +6,8 @@ export const Requisicao = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    // Função para buscar os produtos
-    const fetchProducts = async () => {
+     // Função para buscar os produtos
+     const getProducts = async () => {
       try {
         const response = await axios.get('https://fakestoreapi.com/products');
         setProducts(response.data);
@@ -19,11 +18,13 @@ export const Requisicao = () => {
       }
     };
 
-    fetchProducts();
+  useEffect(() => {
+
+   getProducts();
   }, []);
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error}</p>;
+  loading &&  <p>Loading...</p>;
+  error && <p>Error: {error}</p>;
 
   return (
     <div>

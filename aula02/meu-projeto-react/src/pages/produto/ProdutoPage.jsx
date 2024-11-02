@@ -1,10 +1,13 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import {api} from '../../services/api'
+import { carrinhoContext } from "../../context/carrinhoContext";
 
 export function ProdutoPage() {
   // useEffet - toma conta do que aparece na tela quando fazemos uma requisição
   // "Escuta o que acontece no componente e renderiza a página de acordo com o evento"
   const [contador, setContador] = useState(0);
+
+  const { adicionarItens, itensCarrinho} = useContext(carrinhoContext);
 
   // useEffect(() => {
   //   console.log("Executa em toda renderização");
@@ -50,8 +53,8 @@ export function ProdutoPage() {
       // no lugar do objeto podem ser passados tambem as variáveis
         
       try {
-         await api.post('produto', produto)
-         alert('Produto cadastrado com sucesso!')
+         await api.post('/produto', produto)
+         alert('Produto cadastrado com sucesso!');
       } catch (error) {
          console.log(error)
          alert(
@@ -65,7 +68,7 @@ export function ProdutoPage() {
    //UPDATE
    const updateProduto = async (produto) => {
       try {
-         await api.put('produto', produto)
+         await api.put('/produto', produto)
          alert('Produto atualizado com sucesso!')
       } catch (error) {
          console.log(error)
